@@ -1,0 +1,178 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><title>vue脚手架的使用 | ZemanQuim</title><meta name="description" content="vue脚手架的使用"><meta name="keywords" content="vue,vue-cli"><meta name="author" content="ZemanQuim"><meta name="copyright" content="ZemanQuim"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="preconnect" href="//cdn.jsdelivr.net"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="vue脚手架的使用"><meta name="twitter:description" content="vue脚手架的使用"><meta name="twitter:image" content="https://tva1.sinaimg.cn/large/006tNbRwgy1g9ysh4x2iuj30hn0aiq2v.jpg"><meta property="og:type" content="article"><meta property="og:title" content="vue脚手架的使用"><meta property="og:url" content="https://www.zemanblog.cn/2018/11/23/Vue/vue-cli%204.x%E8%84%9A%E6%89%8B%E6%9E%B6%E7%9A%84%E4%BD%BF%E7%94%A8/"><meta property="og:site_name" content="ZemanQuim"><meta property="og:description" content="vue脚手架的使用"><meta property="og:image" content="https://tva1.sinaimg.cn/large/006tNbRwgy1g9ysh4x2iuj30hn0aiq2v.jpg"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>const autoChangeMode = 'false'
+var t = Cookies.get("theme");
+if (autoChangeMode == '1'){
+const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+const isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+const isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+if (t === undefined){
+  if (isLightMode) activateLightMode()
+  else if (isDarkMode) activateDarkMode()
+  else if (isNotSpecified || hasNoSupport){
+    console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+    now = new Date();
+    hour = now.getHours();
+    isNight = hour < 6 || hour >= 18
+    isNight ? activateDarkMode() : activateLightMode()
+}
+} else if (t == 'light') activateLightMode()
+else activateDarkMode()
+
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="https://www.zemanblog.cn/2018/11/23/Vue/vue-cli%204.x%E8%84%9A%E6%89%8B%E6%9E%B6%E7%9A%84%E4%BD%BF%E7%94%A8/"><link rel="prev" title="vue-router实现原理" href="https://www.zemanblog.cn/2018/11/26/Vue/vue-router%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/"><link rel="next" title="webpack配置开发环境" href="https://www.zemanblog.cn/2018/11/20/webpack%E7%AC%94%E8%AE%B0/"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?c14b5a4aaedf05de9863b8b499a208ba";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https:/m.evanchen.cn/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  highlight_copy: 'false',
+  highlight_lang: 'true',
+  highlight_shrink: 'false',
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    title: 'Snackbar.bookmark.title',
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  copyright: undefined,
+  copy_copyright_js: false,
+  ClickShowText: undefined,
+  medium_zoom: 'false',
+  Snackbar: undefined
+  
+}</script><meta name="generator" content="Hexo 4.2.0"></head><body><div id="header"> <div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">ZemanQuim</a></span><i class="fa fa-bars fa-fw toggle-menu pull_right close" aria-hidden="true"></i><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div></div></span><span class="pull_right" id="search_button"></span></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="lazyload avatar_img" src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'"></div><div class="mobile_post_data"><div class="mobile_data_item is_center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">11</div></a></div></div><div class="mobile_data_item is_center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">12</div></a></div></div></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div></div></div><div id="mobile-sidebar-toc"><div class="toc_mobile_headline">目录</div><ol class="toc_mobile_items"><li class="toc_mobile_items-item toc_mobile_items-level-1"><a class="toc_mobile_items-link" href="#vue脚手架的使用"><span class="toc_mobile_items-number">1.</span> <span class="toc_mobile_items-text">vue脚手架的使用</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#脚手架的意义"><span class="toc_mobile_items-number">1.1.</span> <span class="toc_mobile_items-text">脚手架的意义</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#vue脚手架使用"><span class="toc_mobile_items-number">1.2.</span> <span class="toc_mobile_items-text">vue脚手架使用</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#webpack配置"><span class="toc_mobile_items-number">1.3.</span> <span class="toc_mobile_items-text">webpack配置</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#项目目录说明"><span class="toc_mobile_items-number">1.4.</span> <span class="toc_mobile_items-text">项目目录说明</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-1"><a class="toc_mobile_items-link" href="#单文件组件"><span class="toc_mobile_items-number">2.</span> <span class="toc_mobile_items-text">单文件组件</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#基本概念"><span class="toc_mobile_items-number">2.1.</span> <span class="toc_mobile_items-text">基本概念</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-1"><a class="toc_mobile_items-link" href="#null"><span class="toc_mobile_items-number">3.</span> <span class="toc_mobile_items-text">这是单文件组件的模板内容</span></a></li></ol></div></div><div id="body-wrap"><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true">     </i><div class="auto_open" id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#vue脚手架的使用"><span class="toc-number">1.</span> <span class="toc-text">vue脚手架的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#脚手架的意义"><span class="toc-number">1.1.</span> <span class="toc-text">脚手架的意义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vue脚手架使用"><span class="toc-number">1.2.</span> <span class="toc-text">vue脚手架使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#webpack配置"><span class="toc-number">1.3.</span> <span class="toc-text">webpack配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目目录说明"><span class="toc-number">1.4.</span> <span class="toc-text">项目目录说明</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#单文件组件"><span class="toc-number">2.</span> <span class="toc-text">单文件组件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本概念"><span class="toc-number">2.1.</span> <span class="toc-text">基本概念</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#null"><span class="toc-number">3.</span> <span class="toc-text">这是单文件组件的模板内容</span></a></li></ol></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://tva1.sinaimg.cn/large/006tNbRwgy1g9ysh4x2iuj30hn0aiq2v.jpg)"><div id="post-info"><div id="post-title"><div class="posttitle">vue脚手架的使用</div></div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2018-11-23<span class="post-meta__separator">|</span><i class="fa fa-history" aria-hidden="true"></i> 更新于 2020-01-04</time><div class="post-meta-wordcount"><i class="fa fa-file-word-o post-meta__icon" aria-hidden="true"></i><span>字数总计: </span><span class="word-count">401</span><span class="post-meta__separator">|</span><i class="fa fa-clock-o post-meta__icon" aria-hidden="true"></i><span>阅读时长: 1 分钟</span><span class="post-meta__separator">|</span><i class="fa fa-eye post-meta__icon" aria-hidden="true">       </i><span>阅读量: </span><span id="busuanzi_value_page_pv"></span></div></div></div></div><div class="layout layout_post" id="content-inner">   <article id="post"><div class="article-container" id="post-content"><html><head></head><body><h1 id="vue脚手架的使用"><a href="#vue脚手架的使用" class="headerlink" title="vue脚手架的使用"></a>vue脚手架的使用</h1><h2 id="脚手架的意义"><a href="#脚手架的意义" class="headerlink" title="脚手架的意义"></a>脚手架的意义</h2><ul>
+<li>脚手架是开发<strong>现代web应用</strong>的必备</li>
+<li>充分利用<code>webpack</code>，<code>babel</code>，<code>eslint</code>等工具辅助项目开发</li>
+<li>开箱即用，零配置，无需手动配置繁琐的工具即可使用</li>
+<li>vue脚手架还提供了配套的图形管理界面，用于创建，开发和管理你的项目</li>
+</ul>
+<h2 id="vue脚手架使用"><a href="#vue脚手架使用" class="headerlink" title="vue脚手架使用"></a>vue脚手架使用</h2><ul>
+<li>初始化命令</li>
+</ul>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 全局安装 vue命令</span></span><br><span class="line">yarn global add @vue/cli</span><br><span class="line"><span class="comment"># 初始化项目</span></span><br><span class="line">vue create hello-world</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>选择预设</li>
+</ul>
+<img style="zoom:50%;" data-src="https://tva1.sinaimg.cn/large/006tNbRwgy1g9yqretgi3j30vo0kawfn.jpg" class="lazyload">
+
+<ul>
+<li>选择项目的功能</li>
+</ul>
+<p><code>按空格进行选择，按回车进行下一步</code></p>
+<img style="zoom:50%;" data-src="https://tva1.sinaimg.cn/large/006tNbRwgy1g9yqs4if69j30vo0kaach.jpg" class="lazyload">
+
+<ul>
+<li>选择路由的风格</li>
+</ul>
+<img style="zoom:50%;" data-src="https://tva1.sinaimg.cn/large/006tNbRwgy1g9yqsjha5mj30vo0kajtp.jpg" class="lazyload">
+
+<ul>
+<li>选择css预处理语言</li>
+</ul>
+<img style="zoom:50%;" data-src="https://tva1.sinaimg.cn/large/006tNbRwgy1g9yqszxzxzj30vo0kawh1.jpg" class="lazyload">
+
+<ul>
+<li>选择代码规范</li>
+</ul>
+<img style="zoom:50%;" data-src="https://tva1.sinaimg.cn/large/006tNbRwgy1g9yqtcm7otj30vo0ka775.jpg" class="lazyload">
+
+<ul>
+<li>选择校验规则</li>
+</ul>
+<img style="zoom:50%;" data-src="https://tva1.sinaimg.cn/large/006tNbRwgy1g9yqtrpxprj30vo0kadj9.jpg" class="lazyload">
+
+<ul>
+<li>配置文件的生成方式</li>
+</ul>
+<img style="zoom:50%;" data-src="https://tva1.sinaimg.cn/large/006tNbRwgy1g9yqu3aqqnj30vo0ka41w.jpg" class="lazyload">
+
+<ul>
+<li>保存配置</li>
+</ul>
+<img style="zoom:50%;" data-src="https://tva1.sinaimg.cn/large/006tNbRwgy1g9yqu9c70jj30vo0ka0w6.jpg" class="lazyload">
+
+<ul>
+<li>给预设起名字</li>
+</ul>
+<img style="zoom:50%;" data-src="https://tva1.sinaimg.cn/large/006tNbRwgy1g9yquncftyj30vo0kawhw.jpg" class="lazyload">
+
+<ul>
+<li><p>启动项目（项目根目录下）</p>
+<img style="zoom:50%;" data-src="https://tva1.sinaimg.cn/large/006tNbRwgy1g9yqv9wlpej30uh0u0jvg.jpg" class="lazyload">
+
+</li>
+</ul>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn serve</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="webpack配置"><a href="#webpack配置" class="headerlink" title="webpack配置"></a>webpack配置</h2><p>vue已经提供了webpack的默认配置，也可以通过在根目录中创建<code>vue.config.js</code>文件添加自己的配置</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 自动打开浏览器</span></span><br><span class="line"><span class="built_in">module</span>.exports = {</span><br><span class="line">  devServer: {</span><br><span class="line">    open: <span class="literal">true</span></span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="项目目录说明"><a href="#项目目录说明" class="headerlink" title="项目目录说明"></a>项目目录说明</h2><ul>
+<li><code>.editorcofnig</code> 需要给vscode安装要给插件<code>EditorConfig</code></li>
+<li><code>eslintrc</code>eslint的配置文件，一般不用手动配置</li>
+<li><code>.gitignore</code> git的忽视文件</li>
+</ul>
+<h1 id="单文件组件"><a href="#单文件组件" class="headerlink" title="单文件组件"></a>单文件组件</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><blockquote>
+<p><strong>single-file components(单文件组件)</strong> ，文件扩展名为 <code>.vue</code> 的文件</p>
+</blockquote>
+<p><a href="https://cn.vuejs.org/v2/guide/single-file-components.html" target="_blank" rel="noopener">单文件组件文档</a></p>
+<p>优势：</p>
+<ul>
+<li><a href="https://github.com/vuejs/awesome-vue#source-code-editing" target="_blank" rel="noopener">完整语法高亮</a></li>
+<li><a href="https://webpack.js.org/concepts/modules/#what-is-a-webpack-module" target="_blank" rel="noopener">CommonJS 模块</a></li>
+<li><a href="https://vue-loader.vuejs.org/zh-cn/features/scoped-css.html" target="_blank" rel="noopener">组件作用域的 CSS</a></li>
+</ul>
+<p>单文件组件的结构说明</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><template></span><br><span class="line">  <div></span><br><span class="line">    <h1>这是单文件组件的模板内容</h1></span><br><span class="line">  </div></span><br><span class="line"></template></span><br><span class="line"></span><br><span class="line"><script></span><br><span class="line">// 这是组件的js代码</span><br><span class="line">export default {</span><br><span class="line">  data () {</span><br><span class="line">    return {</span><br><span class="line">      msg: 'hello vue'</span><br><span class="line">    }</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line"></script></span><br><span class="line"></span><br><span class="line"><style></span><br><span class="line">/* 这是单文件组件的样式 */</span><br><span class="line">h1 {</span><br><span class="line">  color: red;</span><br><span class="line">}</span><br><span class="line"></style></span><br></pre></td></tr></tbody></table></figure>
+
+</body></html></div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">ZemanQuim</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://www.zemanblog.cn/2018/11/23/Vue/vue-cli%204.x%E8%84%9A%E6%89%8B%E6%9E%B6%E7%9A%84%E4%BD%BF%E7%94%A8/">https://www.zemanblog.cn/2018/11/23/Vue/vue-cli%204.x%E8%84%9A%E6%89%8B%E6%9E%B6%E7%9A%84%E4%BD%BF%E7%94%A8/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.zemanblog.cn">ZemanQuim</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/vue/">vue    </a><a class="post-meta__tags" href="/tags/vue-cli/">vue-cli    </a></div><div class="post_share"><div class="social-share" data-image="https://tva1.sinaimg.cn/large/006tNbRwgy1g9ysh4x2iuj30hn0aiq2v.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script></div></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="/2018/11/26/Vue/vue-router%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/"><img class="prev_cover lazyload" data-src="https://tva1.sinaimg.cn/large/006tNbRwgy1ga6zjqahv9j30zk0hs74b.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="label">上一篇</div><div class="prev_info"><span>vue-router实现原理</span></div></a></div><div class="next-post pull_right"><a href="/2018/11/20/webpack%E7%AC%94%E8%AE%B0/"><img class="next_cover lazyload" data-src="https://tva1.sinaimg.cn/large/006tNbRwgy1g9ypjtzltyj319e0jgmyq.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="label">下一篇</div><div class="next_info"><span>webpack配置开发环境</span></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2019/01/29/Vue/Vue移动端项目rem布局/" title="Vue移动端项目rem布局"><img class="relatedPosts_cover lazyload"data-src="https://tva1.sinaimg.cn/large/006tNbRwgy1gade7l3jmkj31400p0wex.jpg"><div class="relatedPosts_title">Vue移动端项目rem布局</div></a></div><div class="relatedPosts_item"><a href="/2018/11/26/Vue/vue-router实现原理/" title="vue-router实现原理"><img class="relatedPosts_cover lazyload"data-src="https://tva1.sinaimg.cn/large/006tNbRwgy1ga6zjqahv9j30zk0hs74b.jpg"><div class="relatedPosts_title">vue-router实现原理</div></a></div><div class="relatedPosts_item"><a href="/2019/02/21/Vue/vue-baidu-map  使用("踩坑")心得/" title="vue-baidu-map  使用("踩坑")心得"><img class="relatedPosts_cover lazyload"data-src="https://tva1.sinaimg.cn/large/007S8ZIlly1ghfrytmknij310w0dk7hn.jpg"><div class="relatedPosts_title">vue-baidu-map  使用("踩坑")心得</div></a></div></div><div class="clear_both"></div></div><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
+  clientID: 'a9f24c28a03ea71e4ebf',
+  clientSecret: '98ddbf726bd9e33684bfb1c8fac75e8910441001',
+  repo: 'archer993.github.io',
+  owner: 'archer993',
+  admin: 'archer993',
+  id: md5(decodeURI(location.pathname)),
+  language: ''
+})
+gitalk.render('gitalk-container')</script></div></div></div><footer id="footer" style="background-image: url(https://tva1.sinaimg.cn/large/006tNbRwgy1g9ysh4x2iuj30hn0aiq2v.jpg)"><div id="footer-wrap"><div class="copyright">&copy;2017 - 2020 By ZemanQuim</div><div class="framework-info"><span>驱动 </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div><div class="icp"><a href="http://www.beian.miit.gov.cn/state/outPortal/loginPortal.action" target="_blank" rel="noopener"><img class="icp-icon" src="/img/icp.png"><span>皖ICP备20003424号</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script id="ribbon" src="/js/third-party/canvas-ribbon.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="true"></script><script src="/js/tw_cn.js"></script><script>translateInitilization()
+</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><script src="/js/third-party/click_heart.js"></script></body></html>
